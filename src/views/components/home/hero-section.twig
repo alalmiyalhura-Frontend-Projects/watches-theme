@@ -1,0 +1,91 @@
+{#
+<div class="container mx-auto mt-24">
+  <salla-slider
+    id="main-slider-{{ position }}"
+    class="home-slider main-slider"
+    auto-play
+    loop
+    type="fullwidth"
+    type="fullwidth"
+  >
+    <div slot="items">
+      {% for banner in component.hero_banner %}
+
+      <div class="grid gap-2 md:grid-cols-2 px-[8px]">
+        <div class="m-auto">
+          <h2 class="md:text-2xl italic pb-6 pt-6 text-lg">
+            {{ banner.title }}
+          </h2>
+          <p
+            data-swiper-parallax="-300"
+            class="animate-typing overflow-hidden whitespace-nowrap border-r-4 border-r-black text-5xl text-black font-bold md:text-[2.5rem] text-[2rem] uppercase pb-[1.2rem]"
+          >
+            {{ banner.description }}
+          </p>
+          <a
+            class="block w-fit ms-auto italic text-[1.2rem] text-black"
+            href="{{ banner.url }}"
+          >
+            مزيد من المنتجات
+            <i class="sicon-keyboard_arrow_left font-bold text-[2rem] arrow"></i
+          ></a>
+        </div>
+        <div>
+          <img src="{{ banner.image }}" alt="{{ banner.description }}" />
+        </div>
+      </div>
+
+      {% endfor %}
+    </div>
+  </salla-slider>
+</div>
+#}
+<div>
+  <div>
+    <salla-slider
+      id="main-slider-{{ position }}"
+      class="home-slider main-slider"
+      auto-play
+      loop
+      type="fullwidth"
+      type="fullwidth"
+    >
+      <div slot="items">
+        {% for banner in component.hero_banner %}
+        <div
+          class="bg-cover bg-no-repeat bg-center bg-fixed min-h-screen"
+          style="background-image: url({{ banner.image }})"
+        >
+          <div
+            class="w-full h-screen flex justify-center items-center bg-black/30 backdrop-brightness-75 "
+          >
+            <div class="text-center">
+              <h2 class="md:text-5xl italic pb-6 pt-6 text-xl text-red-200">
+                {{ banner.title }}
+              </h2>
+              <p
+                data-swiper-parallax="-300"
+                class="animate-typing text-white overflow-hidden whitespace-nowrap border-r-4 border-r-black text-3xl font-bold md:text-3xl uppercase pb-8"
+              >
+                {{ banner.description }}
+              </p>
+              <a
+                href="{{ banner.url }}"
+                class="relative items-center justify-start inline-block px-5 py-3 overflow-hidden font-medium transition-all bg-red-200 border-white rounded-xl hover:bg-white group"
+              >
+                <span
+                  class="absolute inset-0 border-0 group-hover:border-[25px] ease-linear duration-100 transition-all border-white rounded-full"
+                ></span>
+                <span
+                  class="relative w-full text-lg text-white transition-colors duration-200 ease-in-out group-hover:text-red-200 group-hover:border-red-200"
+                  >مزيد من المنتجات</span
+                >
+              </a>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </salla-slider>
+  </div>
+</div>

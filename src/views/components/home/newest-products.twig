@@ -1,0 +1,14 @@
+{% set is_vertical = theme.settings.get('vertical_fixed_products', true) %}
+<section class="container mt-6 sm:mt-8">
+  <div class="main-title">
+    {% if component.title %}
+    <div class="text-center">
+      <h2 class="text-[1.5rem] bold">{{ component.title }}</h2>
+      <p class="animate-typing whitespace-nowrap border-r-2 border-r-black text-5xl text-black font-bold">{{ component.desc }}</p>
+    </div>
+    {% endif %}
+  </div>
+  <div class="mt-5">
+    <salla-products-list limit="4" source="latest"></salla-products-list>
+  </div>
+</section>

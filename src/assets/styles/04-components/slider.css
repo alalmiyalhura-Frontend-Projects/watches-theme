@@ -1,0 +1,222 @@
+salla-slider {
+  @apply block;
+}
+salla-slider.details-slider .s-slider-container {
+  @apply bg-white border-[1px] rounded-md;
+}
+salla-slider.details-slider .swiper-slide {
+  @apply relative rounded-md bg-white ring-1 ring-inset ring-gray-100;
+}
+salla-slider.details-slider salla-button.btn--wishlist {
+  @apply absolute rtl:right-4 ltr:left-4 bottom-4 z-[2] sm:hidden;
+}
+salla-slider.details-slider .s-slider-block__title-nav {
+  @apply hidden sm:flex;
+}
+salla-slider .slide--one-fourth {
+  @apply h-auto w-full sm:w-1/2 md:w-1/3 lg:w-1/4 max-w-[250px] sm:max-w-[320px];
+}
+salla-slider .slide--one-sixth {
+  @apply w-1/2 sm:w-2/6 md:w-1/4 lg:w-1/6;
+}
+salla-slider .swiper-slide {
+  -webkit-transform: translateZ(0);
+  -webkit-backface-visibility: hidden;
+}
+
+.promotion-title {
+  @apply absolute z-10 top-4 rtl:right-0 ltr:left-0 font-bold text-sm bg-red-400 text-white rtl:rounded-l-md ltr:rounded-r-md;
+  @apply w-auto m-0 px-3 py-2 !important;
+}
+
+.home-slider__slide {
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+.home-slider__slide:not(.loaded) .overlay {
+  opacity: 0;
+}
+
+salla-slider.photos-slider .swiper {
+  @apply w-full mx-0;
+}
+salla-slider.photos-slider:not(.hydrated) > div {
+  @apply justify-center;
+}
+salla-slider.photos-slider .swiper-slide {
+  @apply h-auto w-[80%] relative rounded-md overflow-hidden mx-2 md:mx-3 lg:mx-4;
+}
+
+.swiper:not(.swiper-initialized) .swiper-button {
+  opacity: 0;
+}
+
+.s-block--testimonials.container {
+  @apply p-0 lg:px-2.5;
+}
+.s-block--testimonials .s-slider-block__title {
+  @apply px-2.5 lg:px-0;
+}
+.s-block--testimonials .s-slider-block__title-nav {
+  @apply hidden lg:flex max-w-[88%] top-[65%] !important;
+}
+.s-block--testimonials .s-slider-block__title-nav button {
+  @apply border-gray-100 shadow-gray-300 !important;
+}
+
+.testimonials-slider {
+  @apply transition-opacity;
+}
+.testimonials-slider .swiper:not(.swiper-initialized) {
+  @apply opacity-0;
+}
+.testimonials-slider .swiper {
+  @apply rtl:pl-12 ltr:pr-12 rtl:lg:pl-0 ltr:lg:pr-0 rtl:pr-5 ltr:pl-5 rtl:lg:pr-0 ltr:lg:pl-0;
+}
+@media (min-width: 1024px) {
+  .testimonials-slider .swiper {
+    margin-left: -200px;
+    margin-right: -200px;
+  }
+}
+@media (min-width: 1024px) {
+  .testimonials-slider .swiper .s-slider-button-prev {
+    margin-left: 200px;
+  }
+  .testimonials-slider .swiper .s-slider-button-next {
+    margin-right: 200px;
+  }
+}
+.testimonials-slider .testimonial {
+  height: 100%;
+  @apply shadow-default lg:shadow-none flex relative p-6 lg:p-10 bg-white rounded-l-md transition-opacity opacity-60;
+}
+.testimonials-slider .testimonial__inner {
+  @apply flex items-center;
+}
+.testimonials-slider .testimonial__avatar {
+  @apply w-20 h-20 rounded-full overflow-hidden shrink-0;
+}
+.testimonials-slider .testimonial__icon {
+  @apply absolute rtl:left-8 ltr:right-8 rtl:sm:left-12 ltr:sm:right-12 rtl:lg:left-8 ltr:lg:right-8 top-4 text-4xl sm:text-5xl text-primary;
+}
+.testimonials-slider .testimonial__text p, .testimonials-slider .testimonial__rating {
+  display: none;
+}
+.testimonials-slider .swiper-slide {
+  @apply overflow-hidden px-2.5 lg:px-3.75;
+  width: 20%;
+  height: auto;
+}
+.testimonials-slider .swiper-slide:not(.swiper-slide-active) .testimonial__avatar {
+  @apply mb-8;
+}
+.testimonials-slider .swiper-slide:not(.swiper-slide-active) .testimonial__inner {
+  @apply flex-col items-center text-center relative;
+}
+.testimonials-slider .swiper-slide:not(.swiper-slide-active) .testimonial__icon {
+  @apply -top-8 left-1/2 -translate-x-1/2 text-2xl;
+}
+.testimonials-slider .swiper-slide-prev .testimonial {
+  @apply items-center justify-end;
+  padding-inline-end: 7%;
+}
+.testimonials-slider .swiper-slide-next .testimonial {
+  @apply items-center justify-start;
+  padding-inline-start: 7%;
+}
+.testimonials-slider .swiper-slide-active {
+  width: 60%;
+}
+.testimonials-slider .swiper-slide-active .testimonial {
+  box-shadow: 5px 0 0 0 var(--color-main);
+  @apply opacity-100 rtl:lg:pl-24 ltr:lg:pr-24;
+}
+.testimonials-slider .swiper-slide-active .testimonial__inner {
+  @apply w-full;
+}
+@media (max-width: 1024px) {
+  .testimonials-slider .swiper-slide-active .testimonial__inner {
+    @apply flex-col items-center justify-center text-center;
+  }
+  .testimonials-slider .swiper-slide-active .testimonial__inner .testimonial__avatar {
+    @apply mb-3 mx-0;
+  }
+}
+.testimonials-slider .swiper-slide-active .testimonial__avatar {
+  @apply rtl:ml-6 ltr:mr-6;
+}
+.testimonials-slider .swiper-slide-active .testimonial__info {
+  @apply mb-2 lg:mb-0;
+}
+.testimonials-slider .swiper-slide-active .testimonial__rating, .testimonials-slider .swiper-slide-active .testimonial__text p {
+  display: block;
+}
+.testimonials-slider .s-slider--nav-arrow {
+  @apply hidden lg:flex translate-y-1/2;
+  right: 17%;
+  top: 35%;
+}
+.testimonials-slider .s-slider--nav-arrow.s-slider-next {
+  @apply rtl:right-auto ltr:left-auto;
+  left: 17%;
+}
+.ltr .testimonials-slider .s-slider--nav-arrow {
+  left: 17%;
+  right: auto;
+}
+.ltr .testimonials-slider .s-slider--nav-arrow.s-slider-next {
+  right: 17%;
+  left: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .best-products-slider .swiper-wrapper {
+    height: 510px;
+  }
+  .best-products-slider .swiper-wrapper .swiper-slide {
+    height: calc((100% - 30px) / 2);
+  }
+}
+
+.swiper-button-disabled {
+  opacity: 0.5;
+}
+
+salla-slider .swiper-pagination-bullet {
+  width: 20px;
+  border-radius: 5px;
+  background: #fff;
+  opacity: 0.3;
+}
+salla-slider .swiper-pagination-bullet-active {
+  opacity: 1;
+  background-color: var(--color-primary);
+}
+salla-slider .swiper-pagination-bullets.swiper-pagination-horizontal {
+  @apply bottom-3 sm:bottom-6;
+}
+
+.offer-slider .s-slider-block__title {
+  @apply mb-5 relative;
+}
+.offer-slider .s-slider-block__title:before {
+  @apply text-5xl font-normal text-red-50 absolute leading-none top-4 rtl:right-0 ltr:left-0;
+  content: "\ee30";
+  font-family: "sallaicons";
+}
+.offer-slider .s-slider-block__title h2 {
+  @apply text-lg text-red-400;
+}
+.offer-slider .s-slider-block__title p {
+  @apply mt-1 leading-6 line-clamp-none;
+}
+
+model-viewer[style*=width]:before {
+  @apply hidden;
+}
+
+.blog-slider .swiper-slide img {
+  @apply min-h-[380px] max-h-[480px] md:max-h-[680px];
+}/*# sourceMappingURL=slider.css.map */
