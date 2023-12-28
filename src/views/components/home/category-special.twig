@@ -1,0 +1,23 @@
+<section class="container">
+  <div slot="items">
+    <div class="flex flex-wrap justify-center items-center gap-8">
+      {% for link in component.category_special %}
+      <a href="{{ link.url }} " class="bg-white">
+        <div
+          class="flex p-2 gap-3 items-center justify-center bg-primary-light"
+        >
+          <div class="rounded-[2rem] overflow-hidden">
+            <img
+              src="{{ link.image }}"
+              alt="{{ link.title }}"
+              class=" object-cover min-h-32 max-h-32 block"
+            />
+          </div>
+          <h4>{{ link.title }}</h4>
+        </div>
+        <p>{{link.url}}</p>
+    </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>

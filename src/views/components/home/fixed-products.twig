@@ -1,0 +1,114 @@
+{% set is_vertical = theme.settings.get('vertical_fixed_products', true) %} {#
+<section class="s-block container">
+  {% if title %}
+
+  <div class="s-block__title">
+    <div class="right-side">
+      <h2>{{ title }}</h2>
+    </div>
+    {% if display_all_url %}
+    <a href="{{ display_all_url }}" class="s-block__display-all"
+      >{{ trans("blocks.home.display_all") }} <i class="sicon-arrow-left"></i
+    ></a>
+    {% endif %}
+  </div>
+  {% endif %}
+
+  <salla-products-list
+    source="selected"
+    limit="{{ limit }}"
+    source-value="[{{ products|map((product) => product.id)|join(',') }}]"
+    class="'vertical-products'"
+  >
+  </salla-products-list>
+</section>
+#}
+
+<div class="head">
+  {% if title %}
+  <h2 class="py-6">{{ title }}</h2>
+  {% endif %}
+</div>
+
+<div class="container mx-auto">
+  <div class="grid md:grid-cols-4 grid-cols-1 gap-8">
+    {% for product in products %}
+    <div class="card-effect crad rounded p-2 flex flex-col">
+      <div class="relative">
+        <img
+          src="{{ product.image.url }}"
+          alt="{{ product.image.alt }}"
+          class="object-cover rounded-[1rem] w-full min-h-[25rem] max-h-[25rem]"
+        />
+        <salla-button
+          class="btn--wishlist animated sws absolute rounded bottom-1 right-1"
+          data-id="{{ product.id }}"
+          onclick="salla.wishlist.toggle({{ product.id }})"
+          shape="icon"
+          fill="outline"
+          color="light"
+        >
+          <i class="sicon-heart"></i>
+        </salla-button>
+      </div>
+      <a href="{{ product.url }}">
+        <p class="text-gray-400 font-[700] py-[1rem] text-[1rem]">
+          {{ product.name }}
+        </p>
+      </a>
+      <div class="mt-auto">
+        <div class="flex justify-between">
+          {% if product.is_on_sale %}
+          <div class="flex gap-2">
+            <h4 class="text-gray-700 text-[.9rem] font-[600]">
+              {{ product.sale_price | money }}
+            </h4>
+            <h4 class="text-red-700 text-[.9rem] font-[600] line-through">
+              {{ product.regular_price | money }}
+            </h4>
+          </div>
+          {% else %}
+          <h4 class="text-gray-800 p-1 rounded bg-gray text-[14px]">
+            {{ product.price | money }}
+          </h4>
+          {% endif %} {% if product.status %}
+          <button
+            onclick="addItem({{ product.id }})"
+            class="add-btn"
+            width="wide"
+          >
+            <i class="sicon-add-to-cart"></i>
+          </button>
+          {% else %}
+          <p>Out of Stock</p>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<script>
+  const showTitle = false;
+  const AddProductButton = document.querySelector("add-button");
+  AddProductButton.addEventListener("failed", (event) => {
+    salla.logger.warn("Add to cart api request failed", event);
+  });
+
+  AddProductButton.addEventListener("success", (event) => {
+    salla.logger.warn("Add to cart api request done", event);
+  });
+  function addItem(productId) {
+    salla.cart
+      .addItem({
+        id: productId,
+        quantity: 1,
+        notes: "please i need to get the red color",
+      })
+      .then((response) => {
+        /* add your code here */
+        console.log("Added");
+      });
+  }
+</script>
